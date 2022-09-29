@@ -18,8 +18,8 @@ function Timeform() {
   const [loading, setLoading] = useState(false);
   const { name, date, description, status } = timeline;
   const router = useRouter();
-  function Loading() {
-    function popLoad() {
+  function Loading({ load }) {
+    const popLoad = () => {
       return (
         <div className={styles.popUp}>
           <div className={styles.popupContent}>
@@ -36,8 +36,8 @@ function Timeform() {
           </div>
         </div>
       );
-    }
-    function popModal() {
+    };
+    const popModal = () => {
       setTimeline(initial);
       return (
         <div className={styles.popUp}>
@@ -54,18 +54,22 @@ function Timeform() {
           </div>
         </div>
       );
-    }
-    if (loading) {
-      return <popLoad />;
+    };
+    if (popup) {
+      if (loading) {
+        return <popLoad />;
+      } else {
+        return <popModal />;
+      }
     } else {
-      return <popModal />;
+      return <></>;
     }
   }
   const handleOnSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
+    setPopup(true);
     async function insertData(data) {
-      setLoading(true);
-      setPopup(true);
       await supabase
         .from("timeline")
         .insert({
@@ -75,9 +79,6 @@ function Timeform() {
           status: data.status,
         })
         .then(setLoading(false));
-      // alert("Timeline Added");
-
-      // router.push("/");
     }
     const lists = {
       name,
@@ -101,7 +102,6 @@ function Timeform() {
   return (
     <div>
       <Header />
-      {popup ? <Loading /> : ""}
       <form className={styles.timeform} onSubmit={handleOnSubmit}>
         <h1>Add Timeline</h1>
         <input
@@ -139,6 +139,7 @@ function Timeform() {
         </select>
         <button type="submit">Add</button>
       </form>
+      <Loading />
     </div>
   );
 }
