@@ -18,67 +18,60 @@ function Timeform() {
   const [loading, setLoading] = useState(false);
   const { name, date, description, status } = timeline;
   const router = useRouter();
-  function Loading({ load }) {
-    const popLoad = () => {
-      return (
-        <div className={styles.popUp}>
-          <div className={styles.popupContent}>
-            <div className={styles.ldsroller}>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+
+  const popLoad = () => {
+    return (
+      <div className={styles.popUp}>
+        <div className={styles.popupContent}>
+          <div className={styles.ldsroller}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
           </div>
         </div>
-      );
-    };
-    const popModal = () => {
-      setTimeline(initial);
-      return (
-        <div className={styles.popUp}>
-          <div className={styles.popupContent}>
-            <span>Timeline Added</span>
-            <Button
-              onClick={() => {
-                setPopup(false);
-                router.push("/");
-              }}
-            >
-              Ok
-            </Button>
-          </div>
+      </div>
+    );
+  };
+  const popModal = () => {
+    setTimeline(initial);
+    return (
+      <div className={styles.popUp}>
+        <div className={styles.popupContent}>
+          <span>Timeline Added</span>
+          <Button
+            onClick={() => {
+              setPopup(false);
+              router.push("/");
+            }}
+          >
+            Ok
+          </Button>
         </div>
-      );
-    };
+      </div>
+    );
+  };
+
+  function Loading() {
     if (popup) {
-      if (loading) {
-        return <popLoad />;
-      } else {
-        return <popModal />;
-      }
+      return loading ? <popLoad /> : <popModal />;
     } else {
       return <></>;
     }
   }
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    setLoading(true);
-    setPopup(true);
     async function insertData(data) {
-      await supabase
-        .from("timeline")
-        .insert({
-          name: data.name,
-          date: data.date,
-          description: data.description,
-          status: data.status,
-        })
-        .then(setLoading(false));
+      await supabase.from("timeline").insert({
+        name: data.name,
+        date: data.date,
+        description: data.description,
+        status: data.status,
+      });
     }
     const lists = {
       name,
@@ -86,7 +79,9 @@ function Timeform() {
       description,
       status,
     };
-    insertData(lists);
+    setLoading(true);
+    setPopup(true);
+    insertData(lists).then(setLoading(false));
   };
 
   const handleInputChange = (event) => {
