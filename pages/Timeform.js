@@ -30,6 +30,7 @@ const PopLoad = () => {
   );
 };
 const PopModal = () => {
+  const router = useRouter();
   setTimeline(initial);
   return (
     <div className={styles.popUp}>
@@ -53,7 +54,6 @@ function Timeform() {
   const [popup, setPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const { name, date, description, status } = timeline;
-  const router = useRouter();
 
   function Loading() {
     if (popup) {
