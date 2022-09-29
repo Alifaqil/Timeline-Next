@@ -12,10 +12,21 @@ const TimelineItem = ({ data, styles, key }) => {
       return "grey";
     }
   }
+
+  function setDirection(status) {
+    if (status === "In progress" || status === "List") {
+      return styles.directionl;
+    } else {
+      return styles.direction;
+    }
+  }
+
+  const lr = setDirection(data.status);
   const color = setColor(data.status);
+
   return (
     <li key={key}>
-      <div className={styles.direction}>
+      <div className={lr}>
         <div className={styles.flagwrapper}>
           <span className={styles.hexa}></span>
           <span className={styles.flag}>{data.name}</span>

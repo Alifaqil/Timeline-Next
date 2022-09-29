@@ -130,6 +130,7 @@
   bottom: -4px;
 }
 
+.directionl,
 .direction {
   float: none;
   width: 100%;
@@ -162,6 +163,7 @@
   color: #fff;
   margin-top: 10px;
 }
+.directionl .flag:after,
 .direction .flag:after {
   content: "";
   position: absolute;
@@ -175,7 +177,12 @@
   border-width: 8px;
   pointer-events: none;
 }
-
+.directionl .flag {
+  -webkit-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15),
+    0 0 1px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.15);
+}
 .direction .flag {
   -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15),
     0 0 1px rgba(0, 0, 0, 0.15);
@@ -191,6 +198,10 @@
   line-height: 1em;
   vertical-align: middle;
   color: #fff;
+}
+
+.directionl .time-wrapper {
+  float: none;
 }
 
 .direction .timewrapper {
@@ -214,6 +225,7 @@
   z-index: 15;
 }
 
+.directionl .desc,
 .direction .desc {
   position: relative;
   margin: 1em 1em 0 1em;
@@ -242,6 +254,18 @@
     top: 8px;
   }
 
+  .timeline .directionl .hexa {
+    left: auto;
+    right: -28px;
+  }
+
+  .directionl {
+    position: relative;
+    width: 310px;
+    float: left;
+    text-align: right;
+  }
+
   .direction {
     position: relative;
     width: 310px;
@@ -257,6 +281,16 @@
     font-size: 18px;
   }
 
+  .directionl .flag:after {
+    left: auto;
+    right: -16px;
+    top: 50%;
+    margin-top: -8px;
+    border: solid transparent;
+    border-left-color: rgb(254, 254, 254);
+    border-width: 8px;
+  }
+
   .direction .flag:after {
     top: 50%;
     margin-top: -8px;
@@ -270,6 +304,10 @@
     display: inline;
     vertical-align: middle;
     margin: 0;
+  }
+
+  .directionl .time-wrapper {
+    float: left;
   }
 
   .direction .timewrapper {
@@ -298,6 +336,12 @@
     float: right;
     text-align: left;
   }
+  .directionl {
+    position: relative;
+    width: 380px;
+    float: left;
+    text-align: right;
+  }
 }
 .timeform {
   padding: 50px;
@@ -316,7 +360,7 @@
 }
 .popUp {
   text-align: center;
-  display: none;
+  display: inline-flex;
   position: fixed;
   z-index: 1;
   padding-top: 100px;
