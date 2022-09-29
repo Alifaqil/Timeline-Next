@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { supabase } from "../supabase-client";
 import styles from "../styles/Time.module.css";
 import Button from "./Button.jsx";
+import Timelist from "./Timelist.js";
 
 const initial = {
   name: "",
@@ -17,6 +18,7 @@ function Timeform() {
   const [popup, setPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const { name, date, description, status } = timeline;
+
   const PopLoad = () => {
     return (
       <div className={styles.popUp}>
@@ -35,6 +37,7 @@ function Timeform() {
       </div>
     );
   };
+
   const PopModal = () => {
     const router = useRouter();
     setTimeline(initial);
@@ -45,6 +48,7 @@ function Timeform() {
           <Button
             onClick={() => {
               setPopup(false);
+              Timelist.forceUpdate();
               router.push("/");
             }}
           >
@@ -54,6 +58,7 @@ function Timeform() {
       </div>
     );
   };
+
   function Loading() {
     if (popup) {
       return loading ? <PopLoad /> : <PopModal />;
@@ -61,6 +66,7 @@ function Timeform() {
       return <div></div>;
     }
   }
+
   const handleOnSubmit = (event) => {
     event.preventDefault();
     async function insertData(data) {

@@ -380,6 +380,14 @@
   width: fit-content;
 }
 
+.popupContent span {
+  align-items: center;
+}
+
+.popupContent button {
+  align-items: center;
+}
+
 .ldsroller {
   display: inline-block;
   position: relative;

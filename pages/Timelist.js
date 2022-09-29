@@ -5,15 +5,16 @@ import styles from "../styles/Time.module.css";
 
 export default function Timelist() {
   const data = useContext(TimeContext);
-  this.forceUpdate();
   console.log(data);
   return (
     <div className={styles.container}>
       <h1>Timeline</h1>
       <ul className={styles.timeline}>
-        {data.map((item, index) => (
-          <TimelineItem data={item} styles={styles} key={item.id} />
-        ))}
+        {data
+          .sort((a, b) => b.date - a.date)
+          .map((item, index) => (
+            <TimelineItem data={item} styles={styles} key={item.id} />
+          ))}
       </ul>
     </div>
   );
