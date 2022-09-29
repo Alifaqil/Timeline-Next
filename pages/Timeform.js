@@ -11,50 +11,49 @@ const initial = {
   description: "",
   status: "List",
 };
-const PopLoad = () => {
-  return (
-    <div className={styles.popUp}>
-      <div className={styles.popupContent}>
-        <div className={styles.ldsroller}>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </div>
-    </div>
-  );
-};
-const PopModal = () => {
-  const router = useRouter();
-  setTimeline(initial);
-  return (
-    <div className={styles.popUp}>
-      <div className={styles.popupContent}>
-        <span>Timeline Added</span>
-        <Button
-          onClick={() => {
-            setPopup(false);
-            router.push("/");
-          }}
-        >
-          Ok
-        </Button>
-      </div>
-    </div>
-  );
-};
 
 function Timeform() {
   const [timeline, setTimeline] = useState(initial);
   const [popup, setPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const { name, date, description, status } = timeline;
-
+  const PopLoad = () => {
+    return (
+      <div className={styles.popUp}>
+        <div className={styles.popupContent}>
+          <div className={styles.ldsroller}>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  const PopModal = () => {
+    const router = useRouter();
+    setTimeline(initial);
+    return (
+      <div className={styles.popUp}>
+        <div className={styles.popupContent}>
+          <span>Timeline Added</span>
+          <Button
+            onClick={() => {
+              setPopup(false);
+              router.push("/");
+            }}
+          >
+            Ok
+          </Button>
+        </div>
+      </div>
+    );
+  };
   function Loading() {
     if (popup) {
       return loading ? <PopLoad /> : <PopModal />;
