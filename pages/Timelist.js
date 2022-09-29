@@ -11,7 +11,7 @@ export default function Timelist() {
       <h1>Timeline</h1>
       <ul className={styles.timeline}>
         {data
-          .sort((a, b) => b.date - a.date)
+          .sort((a, b) => a.date - b.date)
           .map((item, index) => (
             <TimelineItem data={item} styles={styles} key={item.id} />
           ))}
