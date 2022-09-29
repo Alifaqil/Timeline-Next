@@ -221,7 +221,7 @@
   z-index: 15;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 480px) {
   .timeline {
     width: 660px;
     margin: 0 auto;
@@ -333,7 +333,7 @@
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
+  width: fit-content;
 }
 
 .ldsroller {
@@ -353,7 +353,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #fff;
+  background: rgb(0, 0, 0);
   margin: -4px 0 0 -4px;
 }
 .ldsroller div:nth-child(1) {
