@@ -3,12 +3,9 @@ import { TimeContext } from "./Timecontext.js";
 import TimelineItem from "./api/Timeitem.js";
 import styles from "../styles/Time.module.css";
 
-function force() {
-  this.forceUpdate();
-}
 export default function Timelist() {
   const data = useContext(TimeContext);
-  force();
+  this.forceUpdate();
   console.log(data);
   return (
     <div className={styles.container}>
