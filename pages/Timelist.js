@@ -10,11 +10,9 @@ export default function Timelist() {
     <div className={styles.container}>
       <h1>Timeline</h1>
       <ul className={styles.timeline}>
-        {data
-          .sort((a, b) => a.date - b.date)
-          .map((item, index) => (
-            <TimelineItem data={item} styles={styles} key={item.id} />
-          ))}
+        {data.map((item, index) => (
+          <TimelineItem data={item} styles={styles} key={item.id} />
+        ))}
       </ul>
     </div>
   );

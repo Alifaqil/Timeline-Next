@@ -8,7 +8,10 @@ export default function TimeProvider({ children }) {
   const [data, dispatch] = useReducer(timeReducer, []);
 
   async function getData() {
-    const { data, error } = await supabase.from("timeline").select();
+    const { data, error } = await supabase
+      .from("timeline")
+      .select()
+      .order("date", { ascending: false });
 
     data.map((d) => {
       dispatch({
