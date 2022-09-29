@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className={styles.header}>
       <Button onClick={() => router.push("/")}>Timeline</Button>
-      <Button onClick={() => router.push("/timeform")}>Add Timeline</Button>
+      <Button onClick={() => router.push("/Timeform")}>Add Timeline</Button>
     </div>
   );
 }
