@@ -64,14 +64,14 @@ function Timeform() {
   }
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    // async function insertData(data) {
-    //   await supabase.from("timeline").insert({
-    //     name: data.name,
-    //     date: data.date,
-    //     description: data.description,
-    //     status: data.status,
-    //   });
-    // }
+    async function insertData(data) {
+      await supabase.from("timeline").insert({
+        name: data.name,
+        date: data.date,
+        description: data.description,
+        status: data.status,
+      });
+    }
     const lists = {
       name,
       date,
@@ -80,7 +80,7 @@ function Timeform() {
     };
     setLoading(true);
     setPopup(true);
-    // insertData(lists).then(setLoading(false));
+    insertData(lists).then(setLoading(false));
   };
 
   const handleInputChange = (event) => {
