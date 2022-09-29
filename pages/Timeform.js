@@ -9,7 +9,7 @@ const initial = {
   name: "",
   date: "",
   description: "",
-  status: "list",
+  status: "List",
 };
 const PopLoad = () => {
   return (
