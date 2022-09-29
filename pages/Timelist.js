@@ -2,8 +2,13 @@ import React, { useContext } from "react";
 import { TimeContext } from "./Timecontext.js";
 import TimelineItem from "./api/Timeitem.js";
 import styles from "../styles/Time.module.css";
+
+function force() {
+  this.forceUpdate();
+}
 export default function Timelist() {
   const data = useContext(TimeContext);
+  force();
   console.log(data);
   return (
     <div className={styles.container}>
