@@ -1,16 +1,14 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Button from "./Button";
 import styles from "../styles/Home.module.css";
 
 export default function Header() {
+  const router = useRouter();
   return (
     <div className={styles.header}>
-      <Link href="/" passHref>
-        <Button>Timeline</Button>
-      </Link>
-      <Link href="/Timeform">
-        <Button>Add Timeline</Button>
-      </Link>
+      <Button onClick={() => router.push("/")}>Timeline</Button>
+      <Button onClick={() => router.push("/timeform")}>Add Timeline</Button>
     </div>
   );
 }
