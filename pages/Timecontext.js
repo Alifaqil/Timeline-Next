@@ -11,7 +11,7 @@ export default function TimeProvider({ children }) {
     const { data, error } = await supabase
       .from("timeline")
       .select()
-      .order("date", { ascending: false });
+      .order("date", { ascending: true });
 
     data.map((d) => {
       dispatch({
