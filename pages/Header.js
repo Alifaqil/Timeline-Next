@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import Button from "./Button";
 import styles from "../styles/Home.module.css";
