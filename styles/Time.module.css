@@ -380,12 +380,10 @@
   width: fit-content;
 }
 
-.popupContent span {
-  align-items: center;
-}
-
+.popupContent span,
 .popupContent button {
-  align-items: center;
+  margin: auto;
+  width: fit-content;
 }
 
 .ldsroller {
