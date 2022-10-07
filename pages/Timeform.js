@@ -87,7 +87,7 @@ function Timeform() {
     setPopup(true);
     insertData(lists).then(setTimeout(function () {
         setLoading(false);
-      }, 25));
+      }, 250));
   };
 
   const handleInputChange = (event) => {
