@@ -5,6 +5,8 @@ import { supabase } from "../supabase-client";
 import styles from "../styles/Time.module.css";
 import Button from "./Button.jsx";
 import Timelist from "./Timelist.js";
+import { useDispatch } from "react-redux";
+import TimeSlicer from "./TimeSlicer.js";
 
 const initial = {
   name: "",
@@ -18,6 +20,8 @@ function Timeform() {
   const [popup, setPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   const { name, date, description, status } = timeline;
+  const addData = TimeSlicer.actions.addData;
+  const dispatch = useDispatch();
 
   const PopLoad = () => {
     return (
@@ -69,14 +73,6 @@ function Timeform() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    async function insertData(data) {
-      await supabase.from("timeline").insert({
-        name: data.name,
-        date: data.date,
-        description: data.description,
-        status: data.status,
-      });
-    }
     const lists = {
       name,
       date,
@@ -85,9 +81,11 @@ function Timeform() {
     };
     setLoading(true);
     setPopup(true);
-    insertData(lists).then(setTimeout(function () {
+    dispatch(addData(lists)).then(
+      setTimeout(function () {
         setLoading(false);
-      }, 25));
+      }, 25)
+    );
   };
 
   const handleInputChange = (event) => {

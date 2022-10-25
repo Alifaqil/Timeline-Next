@@ -1,11 +1,13 @@
 import "../styles/globals.css";
-import TimeProvider from "./Timecontext";
+// import TimeProvider from "./Timecontext";
+import { store } from "./store";
+import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <TimeProvider>
+    <Provider store={store}>
       <Component {...pageProps} />
-    </TimeProvider>
+    </Provider>
   );
 }
 
